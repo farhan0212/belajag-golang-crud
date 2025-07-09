@@ -1,0 +1,35 @@
+@host = http://localhost:8080
+POST {{host}}/user
+Content-Type: application/json
+
+{
+    "Name": "max  ",
+    "Email": "max@example.com"
+}
+
+###
+
+GET {{host}}/users?page=5&limit=15
+
+###
+
+GET {{host}}/users 
+Content-Type: application/json
+
+###
+GET {{host}}/user?name=karl markx
+
+###
+GET {{host}}/user/14
+
+###
+PUT {{host}}/user/15
+Content-Type: application/json
+
+{
+    "Name": "update",
+    "Email": "update@example.com"
+}
+###
+
+DELETE {{host}}/user/13
