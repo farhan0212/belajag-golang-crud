@@ -3,9 +3,9 @@ POST {{host}}/user
 Content-Type: application/json
 
 {
-    "name": ".asep1234",
-    "email": "asep1234@example.com",
-    "password": "asep1234",
+    "name": "ahmad123",
+    "email": "ahmad123@example.com",
+    "password": "ahmad123"
 }
 
 ###
@@ -13,8 +13,8 @@ POST {{host}}/user/login
 Content-Type: application/json
 
 {
-    "email": "asep1234@example.com",
-    "password": "asep1234"
+    "email": ".ahmad123@example.com",
+    "password": "ahmad123"
 }
 
 ###

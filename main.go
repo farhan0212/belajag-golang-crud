@@ -5,18 +5,31 @@ import (
 	"belaja-golang-crud/routes"
 	"fmt"
 	"log"
+	"log/slog"
 	"net/http"
+	"os"
 
-	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
 )
 
 func main() {
+
 	db.InitDB()
 
 	r := chi.NewRouter()
 
-	r.Use(middleware.Logger)
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
+
+	r.Use(func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			logger.Info("request",
+				"method", r.Method,
+				"path", r.URL.Path,
+				"ip", r.RemoteAddr,
+			)
+			next.ServeHTTP(w, r)
+		})
+	})
 
 	r.Route("/user", routes.UserRoutes)
 	r.Route("/users", routes.UserListGo)

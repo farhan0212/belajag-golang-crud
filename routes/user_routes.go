@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"belaja-golang-crud/controllers"
 	"belaja-golang-crud/handlers"
 	"belaja-golang-crud/middleware"
 
@@ -9,8 +10,8 @@ import (
 
 func UserRoutes(r chi.Router) {
 
-	r.Post("/login", handlers.LoginUser)
-	r.Post("/", handlers.CreateUser)
+	r.Post("/login", controllers.LoginUser)
+	r.Post("/", controllers.CreateUser)
 
 	r.Group(func(r chi.Router) {
 		r.Use(middleware.AuthMiddleware)

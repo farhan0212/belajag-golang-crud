@@ -18,6 +18,19 @@ type User struct {
 }
 
 type LoginRequest struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
+	Email    string `json:"email" validate:"required,email"`
+	Password string `json:"password" validate:"required,"`
+}
+
+type PaginationRequest struct {
+	Page  int `form:"page" default:"1"`
+	Limit int `form:"limit" default:"10"`
+}
+
+type PaginationResponse struct {
+	Page       int         `json:"page"`
+	Limit      int         `json:"limit"`
+	Total      int64       `json:"total"`
+	TotalPages int         `json:"total_pages"`
+	Data       interface{} `json:"data"`
 }
