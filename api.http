@@ -3,18 +3,23 @@ POST {{host}}/user
 Content-Type: application/json
 
 {
-    "Name": "max  ",
-    "Email": "max@example.com"
+    "name": ".asep1234",
+    "email": "asep1234@example.com",
+    "password": "asep1234",
 }
 
 ###
+POST {{host}}/user/login
+Content-Type: application/json
 
-GET {{host}}/users?page=5&limit=15
+{
+    "email": "asep1234@example.com",
+    "password": "asep1234"
+}
 
 ###
+GET {{host}}/users?page=5&limit=15
 
-GET {{host}}/users 
-Content-Type: application/json
 
 ###
 GET {{host}}/user?name=karl markx

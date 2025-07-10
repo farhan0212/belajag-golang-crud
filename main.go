@@ -18,13 +18,6 @@ func main() {
 
 	r.Use(middleware.Logger)
 
-	r.Use(func(next http.Handler) http.Handler {
-		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			log.Printf("Incoming %s %s", r.Method, r.URL.Path)
-			next.ServeHTTP(w, r)
-		})
-	})
-
 	r.Route("/user", routes.UserRoutes)
 	r.Route("/users", routes.UserListGo)
 
@@ -32,4 +25,5 @@ func main() {
 	if err := http.ListenAndServe(":8080", r); err != nil {
 		log.Fatal("Gagal menjalankan server:", err)
 	}
+
 }
