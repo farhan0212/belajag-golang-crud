@@ -13,22 +13,20 @@ POST {{host}}/user/login
 Content-Type: application/json
 
 {
-    "email": ".ahmad123@example.com",
+    "email": "ahmad123@example.com",
     "password": "ahmad123"
 }
 
 ###
-GET {{host}}/users?page=5&limit=15
-
-
+GET {{host}}/users?page=1&limit=15
 ###
 GET {{host}}/user?name=karl markx
 
 ###
-GET {{host}}/user/14
+GET {{host}}/user/227
 
 ###
-PUT {{host}}/user/15
+PUT {{host}}/user/226
 Content-Type: application/json
 
 {
@@ -36,5 +34,4 @@ Content-Type: application/json
     "Email": "update@example.com"
 }
 ###
-
-DELETE {{host}}/user/13
+DELETE {{host}}/user/227

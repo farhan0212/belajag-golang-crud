@@ -5,7 +5,6 @@ import (
 	"belaja-golang-crud/repository"
 	"belaja-golang-crud/utils"
 	"errors"
-	"math"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -50,29 +49,5 @@ func LoginUser(req models.LoginRequest) (map[string]interface{}, error) {
 		"name":  user.Name,
 		"role":  user.Role,
 		"token": token,
-	}, nil
-}
-
-func GetPaginationUsers(page, limit int) (*models.PaginationResponse, error) {
-	offset := (page - 1) * limit
-
-	total, err := repository.CountUsers()
-	if err != nil {
-		return nil, err
-	}
-
-	users, err := repository.GetUsers(limit, offset)
-	if err != nil {
-		return nil, err
-	}
-
-	totalPages := int(math.Ceil(float64(total) / float64(limit)))
-
-	return &models.PaginationResponse{
-		Page:       page,
-		Limit:      limit,
-		Total:      total,
-		TotalPages: totalPages,
-		Data:       users,
 	}, nil
 }

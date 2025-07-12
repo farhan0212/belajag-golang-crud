@@ -6,6 +6,7 @@ import (
 	"belaja-golang-crud/services"
 	"belaja-golang-crud/utils"
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -41,6 +42,8 @@ func LoginUser(w http.ResponseWriter, r *http.Request) {
 		utils.ResponseError(w, http.StatusBadRequest, "gagal membaca data login")
 		return
 	}
+
+	fmt.Println("received : %s, pass : %s\n", req.Email, req.Password)
 
 	if req.Email == "" || req.Password == "" {
 		utils.ResponseError(w, http.StatusBadRequest, "Email dan password harus diisi")
